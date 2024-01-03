@@ -17,6 +17,8 @@ import com.unitbv.siipa.database.ApplicationRoomDatabase;
 import com.unitbv.siipa.fragments.AddDestinationFragment;
 import com.unitbv.siipa.fragments.CreateDialog;
 import com.unitbv.siipa.fragments.DestinationDetailsFragment;
+import com.unitbv.siipa.service.UserDataEnum;
+import com.unitbv.siipa.user.RoleEnum;
 import com.unitbv.siipa.utils.CRUDOperations;
 
 public class DestinationViewHolder extends RecyclerView.ViewHolder{
@@ -43,9 +45,16 @@ public class DestinationViewHolder extends RecyclerView.ViewHolder{
         updateButton = itemView.findViewById(R.id.edit_btn);
         detailsButton = itemView.findViewById(R.id.details_btn);
 
-        initDeleteButton();
-        initUpdateButton();
         initDetailsButton();
+
+        if (RoleEnum.USER.equals(UserDataEnum.INSTANCE.getUser().getRoleEnum())) {
+            removeButton.setVisibility(View.GONE);
+            updateButton.setVisibility(View.GONE);
+        } else {
+            initDeleteButton();
+            initUpdateButton();
+        }
+
     }
 
     private void initDetailsButton() {
