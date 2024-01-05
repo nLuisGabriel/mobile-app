@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.unitbv.siipa.R;
+import com.unitbv.siipa.booking.Booking;
 import com.unitbv.siipa.database.ApplicationRoomDatabase;
 import com.unitbv.siipa.destinations.Destination;
 import com.unitbv.siipa.fragments.LoginFragment;
+import com.unitbv.siipa.reviews.Review;
 import com.unitbv.siipa.user.RoleEnum;
 import com.unitbv.siipa.user.User;
 
@@ -104,6 +106,27 @@ public class MainActivity extends AppCompatActivity {
             destination.setName("name5");
             destination.setPrice(Double.valueOf("221"));
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
+
+            // add dummy review
+            Review review = new Review();
+            review.setComment("Dummy comment");
+            review.setCreationDate(LocalDate.now());
+            review.setDestinationId(1L);
+            review.setUserId(1L);
+            ApplicationRoomDatabase.getDatabase(getApplicationContext()).reviewDao().addReview(review);
+
+            //add dummy use booking
+            Booking booking = new Booking();
+            booking.setBookingDate(LocalDate.now());
+            booking.setLastName("ADMIN");
+            booking.setName("ADMIN");
+            booking.setNumberOfPeople(1);
+            booking.setEndDate(LocalDate.MAX);
+            booking.setFromDate(LocalDate.MIN);
+            booking.setPrice(22.00);
+            booking.setDestinationId(1L);
+            booking.setUserId(1L);
+            ApplicationRoomDatabase.getDatabase(getApplicationContext()).bookingDao().addBooking(booking);
         }
     }
 }

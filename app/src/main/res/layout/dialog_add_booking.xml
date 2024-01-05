@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/textViewDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Book Now"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="379dp"
+            android:layout_height="56dp"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="379dp"
+            android:layout_height="56dp"
+            android:hint="Last Name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Date" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewStart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text=""
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/calendarIconStart"
+                android:layout_width="43dp"
+                android:layout_height="50dp"
+                android:baselineAligned="false"
+                android:contentDescription="Calendar Icon"
+                android:onClick="openStartDatePicker"
+                android:src="@android:drawable/ic_menu_today" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="End Date" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewEnd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text=""
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/calendarIconEnd"
+                android:layout_width="44dp"
+                android:layout_height="46dp"
+                android:contentDescription="Calendar Icon"
+                android:onClick="openEndDatePicker"
+                android:src="@android:drawable/ic_menu_today" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Number of Persons" />
+
+        <EditText
+            android:id="@+id/editTextNumPersons"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Enter number of persons"
+            android:inputType="number"
+            android:text="1"/>
+
+
+        <TextView
+            android:id="@+id/textViewCalculatedPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculated Price: $0.00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onCancelClick"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/buttonBookNow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onBookNowClick"
+                android:text="Book Now" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
