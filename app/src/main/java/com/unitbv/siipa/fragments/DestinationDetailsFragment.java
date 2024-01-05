@@ -2,9 +2,14 @@ package com.unitbv.siipa.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -226,6 +231,8 @@ public class DestinationDetailsFragment extends Fragment {
                     booking.setUserId(UserDataEnum.INSTANCE.getUser().getId());
                     ApplicationRoomDatabase.getDatabase(getContext()).bookingDao().addBooking(booking);
 
+                    sendNotificationFromFragment(destination);
+
                     dialog.dismiss();
                 }
 
@@ -304,6 +311,29 @@ public class DestinationDetailsFragment extends Fragment {
         } catch (NumberFormatException e) {
             // Handle the case where the input is not a valid number
             textViewCalculatedPrice.setText("Calculated Price: N/A");
+        }
+    }
+
+    private void sendNotificationFromFragment(Destination destination) {
+        Context context = requireContext();
+
+        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("ID", "NAME", NotificationManager.IMPORTANCE_DEFAULT);
+            if (channel != null) {
+                manager.createNotificationChannel(channel);
+            }
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "ID").setSmallIcon(
+                R.drawable.ic_launcher_background
+        ).setContentTitle("Booking created for " + destination.getName()).
+                setContentText("Booking has been created for location " + destination.getName() +
+                        " with final price: " + calculatedPrice +
+                        ". \nFrom " + startDate.toString() + " to " + endDate.toString() + ".").
+                setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        if (manager != null) {
+            manager.notify(123, builder.build());
         }
     }
 }

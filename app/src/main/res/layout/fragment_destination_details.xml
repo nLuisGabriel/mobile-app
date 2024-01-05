@@ -114,10 +114,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="36dp"
             android:text="Back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewReviewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Reviews"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewReviews"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.762" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewReviews"
@@ -129,62 +142,39 @@
             android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/desc_details"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0" >
 
-        <TextView
-            android:id="@+id/textViewReviewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="347dp"
-            android:text="Reviews"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/buttonAddBooking"
-            android:layout_width="106dp"
-            android:layout_height="51dp"
-            android:text="Booking"
-            app:layout_constraintBottom_toTopOf="@+id/textViewReviewTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/buttonAddReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
             android:text="Add Review"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewReviews"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewReviewTitle" />
+            app:layout_constraintHorizontal_bias="0.814"
+            app:layout_constraintStart_toEndOf="@+id/textViewReviewTitle"
+            app:layout_constraintTop_toBottomOf="@+id/desc_details"
+            app:layout_constraintVertical_bias="0.774" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <Button
+            android:id="@+id/buttonAddBooking"
+            android:layout_width="106dp"
+            android:layout_height="51dp"
+            android:text="Booking"
+            app:layout_constraintBottom_toTopOf="@+id/buttonAddReview"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.881"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/back_button_details"
+            app:layout_constraintVertical_bias="0.793" />
 
-            <!-- Button to add a new review -->
-
-            <!-- Title or Header for the Review Section -->
-
-            <!-- RecyclerView to display the list of reviews -->
-
-            <!-- Add a button or other UI elements for adding a new review if needed -->
-
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

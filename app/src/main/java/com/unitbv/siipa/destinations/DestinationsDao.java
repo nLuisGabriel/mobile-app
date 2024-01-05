@@ -21,4 +21,7 @@ public interface DestinationsDao {
 
     @Update
     void updateDestination(Destination destination);
+
+    @Query("SELECT * from destination WHERE id = :id")
+    Destination getDestinationById(Long id);
 }

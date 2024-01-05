@@ -12,6 +12,9 @@ public interface UserDao {
     @Query("SELECT * from User ORDER By username Asc")
     List<User> getUsers();
 
+    @Query("SELECT * FROM user WHERE id = :id ")
+    User getUserById(Long id);
+
     @Delete
     void deleteUser(User user);
     @Insert

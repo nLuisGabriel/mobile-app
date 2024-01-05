@@ -32,7 +32,11 @@ public class Home extends AppCompatActivity {
                     return true;
                 } else if (id == R.id.home) {
                     return true;
-                } else {
+                } else  if (id == R.id.bookings) {
+                    startActivity(new Intent(getApplicationContext(), BookingActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                }else {
                     return false;
                 }
             }

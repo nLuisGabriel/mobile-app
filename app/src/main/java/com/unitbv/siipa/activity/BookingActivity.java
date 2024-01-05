@@ -1,35 +1,38 @@
 package com.unitbv.siipa.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unitbv.siipa.R;
+import com.unitbv.siipa.fragments.BookingFragment;
 import com.unitbv.siipa.fragments.DestinationFragment;
 
-public class TouristDestinations extends AppCompatActivity {
+public class BookingActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tourist_destinations);
+        setContentView(R.layout.activity_booking);;
         if (savedInstanceState == null) {
             loadInitialFragment();
         }
         bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.tourist_destinations);
+        bottomNavigationView.setSelectedItemId(R.id.bookings);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.tourist_destinations) {
+                    startActivity(new Intent(getApplicationContext(), TouristDestinations.class));
+                    overridePendingTransition(0,0);
                     return true;
                 } else if (id == R.id.home) {
                     startActivity(new Intent(getApplicationContext(), Home.class));
@@ -53,7 +56,7 @@ public class TouristDestinations extends AppCompatActivity {
 
     private void loadInitialFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView4, new DestinationFragment());
+        fragmentTransaction.replace(R.id.fragmentContainerView2, new BookingFragment());
         fragmentTransaction.commit();
     }
 }

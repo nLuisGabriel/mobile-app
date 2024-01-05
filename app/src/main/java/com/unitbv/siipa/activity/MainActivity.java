@@ -1,6 +1,5 @@
 package com.unitbv.siipa.activity;
 
-import static com.unitbv.siipa.utils.Utils.deleteDatabaseFile;
 
 import android.os.Bundle;
 
