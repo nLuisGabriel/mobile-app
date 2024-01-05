@@ -145,7 +145,7 @@
             app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/desc_details"
-            app:layout_constraintVertical_bias="1.0" >
+            app:layout_constraintVertical_bias="1.0">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -158,10 +158,10 @@
             android:text="Add Review"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewReviews"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.814"
+            app:layout_constraintHorizontal_bias="0.833"
             app:layout_constraintStart_toEndOf="@+id/textViewReviewTitle"
             app:layout_constraintTop_toBottomOf="@+id/desc_details"
-            app:layout_constraintVertical_bias="0.774" />
+            app:layout_constraintVertical_bias="0.981" />
 
         <Button
             android:id="@+id/buttonAddBooking"
@@ -173,7 +173,16 @@
             app:layout_constraintHorizontal_bias="0.881"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/back_button_details"
-            app:layout_constraintVertical_bias="0.793" />
+            app:layout_constraintVertical_bias="0.931" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="94dp"
+            android:layout_height="77dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            tools:src="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

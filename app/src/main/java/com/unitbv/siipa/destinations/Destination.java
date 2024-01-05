@@ -15,6 +15,7 @@ public class Destination implements Serializable {
     private Double price;
     private String location;
     private String description;
+    private String photoPath;
 
     @NonNull
     public Long getId() {
@@ -55,5 +56,13 @@ public class Destination implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 }

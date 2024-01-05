@@ -1,7 +1,12 @@
 package com.unitbv.siipa.activity;
 
 
+import static com.unitbv.siipa.utils.Utils.deleteDatabaseFile;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,6 +20,7 @@ import com.unitbv.siipa.reviews.Review;
 import com.unitbv.siipa.user.RoleEnum;
 import com.unitbv.siipa.user.User;
 
+import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -38,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initDB() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.travel);
+        String base64String = bitmapToBase64(bitmap);
+
         List<User> userList = ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().getUsers();
         if (userList == null || userList.isEmpty()) {
             User user = new User();
@@ -62,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc");
             destination.setName("name");
             destination.setPrice(Double.valueOf("22"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -69,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc2");
             destination.setName("name2");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -76,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc3");
             destination.setName("name3");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -83,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc3");
             destination.setName("name3");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -90,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc4");
             destination.setName("name4");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -97,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc5");
             destination.setName("name5");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             destination = new Destination();
@@ -104,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             destination.setLocation("loc5");
             destination.setName("name5");
             destination.setPrice(Double.valueOf("221"));
+            destination.setPhotoPath(base64String);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
 
             // add dummy review
@@ -128,4 +144,12 @@ public class MainActivity extends AppCompatActivity {
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).bookingDao().addBooking(booking);
         }
     }
+
+    public static String bitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.NO_WRAP);
+    }
+
 }

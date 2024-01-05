@@ -5,19 +5,14 @@ import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.NotificationCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +22,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitbv.siipa.R;
 import com.unitbv.siipa.booking.Booking;
@@ -42,7 +44,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 public class DestinationDetailsFragment extends Fragment {
 
@@ -58,6 +59,8 @@ public class DestinationDetailsFragment extends Fragment {
     private LocalDate endDate;
     private double calculatedPrice;
 
+    private ImageView image;
+
     public DestinationDetailsFragment() {
         // Required empty public constructor
     }
@@ -70,6 +73,7 @@ public class DestinationDetailsFragment extends Fragment {
         locationDetails = view.findViewById(R.id.location_details);
         priceDetails = view.findViewById(R.id.price_details);
         descriptionDetails = view.findViewById(R.id.desc_details);
+        image = view.findViewById(R.id.imageView);
 
         final Bundle bundle = getArguments();
         boolean destinationReceived = bundle == null || bundle.get(CRUDOperations.READ.toString()) == null;
@@ -84,6 +88,7 @@ public class DestinationDetailsFragment extends Fragment {
         locationDetails.setText(destination.getLocation());
         descriptionDetails.setText(destination.getDescription());
         priceDetails.setText(destination.getPrice().toString());
+        image.setImageBitmap(base64ToBitmap(destination.getPhotoPath()));
 
         TextView textViewReviewTitle = view.findViewById(R.id.textViewReviewTitle);
         textViewReviewTitle.setText("Reviews");
@@ -336,4 +341,11 @@ public class DestinationDetailsFragment extends Fragment {
             manager.notify(123, builder.build());
         }
     }
+
+    public Bitmap base64ToBitmap(String result) {
+        byte[] decodedString = Base64.decode(result, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
+
 }
