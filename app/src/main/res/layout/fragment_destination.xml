@@ -26,15 +26,16 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/destination_recycleView"
             android:layout_width="412dp"
-            android:layout_height="530dp"
+            android:layout_height="565dp"
             android:background="@color/purple_200"
             android:padding="16dp"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.388" />
+            app:layout_constraintVertical_bias="0.425" />
 
         <Switch
             android:id="@+id/switch1"

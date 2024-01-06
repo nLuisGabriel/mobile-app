@@ -36,6 +36,10 @@ public class Home extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), BookingActivity.class));
                     overridePendingTransition(0,0);
                     return true;
+                }else  if (id == R.id.log_out) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
                 }else {
                     return false;
                 }

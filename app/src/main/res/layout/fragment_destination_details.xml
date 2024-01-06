@@ -129,23 +129,22 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewReviews"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.762" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewReviews"
-            android:layout_width="362dp"
-            android:layout_height="346dp"
+            android:layout_width="315dp"
+            android:layout_height="270dp"
             android:layout_weight="1"
             android:clipToPadding="false"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.224"
+            app:layout_constraintHorizontal_bias="0.166"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/desc_details"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="0.884">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -177,9 +176,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="94dp"
-            android:layout_height="77dp"
+            android:layout_width="193dp"
+            android:layout_height="145dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             tools:src="@tools:sample/avatars" />
