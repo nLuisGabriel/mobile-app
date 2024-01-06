@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        deleteDatabaseFile(getApplicationContext(), "mobile-database");
+//        deleteDatabaseFile(getApplicationContext(), "mobile-database");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -49,100 +49,64 @@ public class MainActivity extends AppCompatActivity {
 
         List<User> userList = ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().getUsers();
         if (userList == null || userList.isEmpty()) {
-            User user = new User();
-            user.setPassword("1234");
-            user.setUsername("ADMIN");
-            user.setCreateDate(LocalDate.now());
-            user.setRoleEnum(RoleEnum.ADMIN);
-            user.setEmail("admin@gmail.com");
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().addUser(user);
-            user = new User();
-            user.setPassword("1234");
-            user.setUsername("USER");
-            user.setCreateDate(LocalDate.now());
-            user.setRoleEnum(RoleEnum.USER);
-            user.setEmail("user@gmail.com");
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().addUser(user);
+            // Admin user
+            User adminUser = new User();
+            adminUser.setPassword("1234");
+            adminUser.setUsername("ADMIN");
+            adminUser.setCreateDate(LocalDate.now());
+            adminUser.setRoleEnum(RoleEnum.ADMIN);
+            adminUser.setEmail("admin@gmail.com");
+            ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().addUser(adminUser);
+
+            // Regular user
+            User regularUser = new User();
+            regularUser.setPassword("1234");
+            regularUser.setUsername("USER");
+            regularUser.setCreateDate(LocalDate.now());
+            regularUser.setRoleEnum(RoleEnum.USER);
+            regularUser.setEmail("user@gmail.com");
+            ApplicationRoomDatabase.getDatabase(getApplicationContext()).userDao().addUser(regularUser);
         }
+
         List<Destination> destinationList = ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().getDestinations();
         if (destinationList == null || destinationList.isEmpty()) {
-            Destination destination = new Destination();
-            destination.setDescription("Desc");
-            destination.setLocation("loc");
-            destination.setName("name");
-            destination.setPrice(Double.valueOf("22"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
+            // Create realistic destinations
+            createRealisticDestination("City Center", "Explore the heart of the city.", "City1", 50.0, base64String);
+            createRealisticDestination("Mountain Retreat", "Escape to the serene mountains.", "Mountain1", 120.0, base64String);
+            createRealisticDestination("Beach Paradise", "Relax on the sandy beaches.", "Beach1", 80.0, base64String);
+            // Add more destinations as needed
 
-            destination = new Destination();
-            destination.setDescription("Desc2");
-            destination.setLocation("loc2");
-            destination.setName("name2");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            destination = new Destination();
-            destination.setDescription("Desc3");
-            destination.setLocation("loc3");
-            destination.setName("name3");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            destination = new Destination();
-            destination.setDescription("Desc3");
-            destination.setLocation("loc3");
-            destination.setName("name3");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            destination = new Destination();
-            destination.setDescription("Desc4");
-            destination.setLocation("loc4");
-            destination.setName("name4");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            destination = new Destination();
-            destination.setDescription("Desc5");
-            destination.setLocation("loc5");
-            destination.setName("name5");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            destination = new Destination();
-            destination.setDescription("Desc5");
-            destination.setLocation("loc5");
-            destination.setName("name5");
-            destination.setPrice(Double.valueOf("221"));
-            destination.setPhotoPath(base64String);
-            ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
-
-            // add dummy review
+            // Add a dummy review
             Review review = new Review();
-            review.setComment("Dummy comment");
+            review.setComment("A wonderful experience!");
             review.setCreationDate(LocalDate.now());
             review.setDestinationId(1L);
             review.setUserId(1L);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).reviewDao().addReview(review);
 
-            //add dummy use booking
+            // Add a dummy booking
             Booking booking = new Booking();
             booking.setBookingDate(LocalDate.now());
-            booking.setLastName("ADMIN");
-            booking.setName("ADMIN");
-            booking.setNumberOfPeople(1);
-            booking.setEndDate(LocalDate.MAX);
-            booking.setFromDate(LocalDate.MIN);
-            booking.setPrice(22.00);
+            booking.setLastName("Mihai");
+            booking.setName("Spiridon");
+            booking.setNumberOfPeople(2);
+            booking.setEndDate(LocalDate.now().plusDays(5));
+            booking.setFromDate(LocalDate.now().plusDays(2));
+            booking.setPrice(120.0);
             booking.setDestinationId(1L);
             booking.setUserId(1L);
             ApplicationRoomDatabase.getDatabase(getApplicationContext()).bookingDao().addBooking(booking);
         }
+    }
+
+    private void createRealisticDestination(String name, String description, String location, double price, String base64Image) {
+        Destination destination = new Destination();
+        destination.setDescription(description);
+        destination.setLocation(location);
+        destination.setName(name);
+        destination.setPrice(price);
+        destination.setPhotoPath(base64Image);
+        ApplicationRoomDatabase.getDatabase(getApplicationContext()).destinationDao().addDestinations(destination);
     }
 
     public static String bitmapToBase64(Bitmap bitmap) {
