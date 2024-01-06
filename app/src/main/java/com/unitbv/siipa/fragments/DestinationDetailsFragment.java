@@ -181,6 +181,7 @@ public class DestinationDetailsFragment extends Fragment {
         EditText editTextLastName = dialogView.findViewById(R.id.editTextLastName);
         EditText editTextNumPersons = dialogView.findViewById(R.id.editTextNumPersons);
         TextView textViewCalculatedPrice = dialogView.findViewById(R.id.textViewCalculatedPrice);
+        calculatedPrice = destination.getPrice();
         textViewCalculatedPrice.setText(String.format(Locale.getDefault(),
                 "Calculated Price: $%.2f", destination.getPrice()));
         Button buttonCancel = dialogView.findViewById(R.id.buttonCancel);
