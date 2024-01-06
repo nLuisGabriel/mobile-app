@@ -17,7 +17,8 @@ import java.time.LocalDate;
                         childColumns = "userId"),
                 @ForeignKey(entity = Destination.class,
                         parentColumns = "id",
-                        childColumns = "destinationId")
+                        childColumns = "destinationId",
+                        onDelete = ForeignKey.CASCADE)
         })
 public class Booking {
 
