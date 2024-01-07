@@ -110,6 +110,7 @@ public class DestinationViewHolder extends RecyclerView.ViewHolder{
                             case DialogInterface.BUTTON_POSITIVE:
                                 ApplicationRoomDatabase.getDatabase(v.getContext()).destinationDao().deleteDestination(destination);
                                 destinationAdapter.destinationArrayList.remove(position);
+                                destinationAdapter.destinationArrayListFull.remove(destination);
                                 destinationAdapter.notifyItemRemoved(position);
                                 break;
 

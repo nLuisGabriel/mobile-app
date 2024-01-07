@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -26,31 +26,59 @@
         >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/delete_dest"
-                    android:layout_width="51dp"
-                    android:layout_height="43dp"
-                    android:layout_gravity="center"
-                    android:drawableBottom="@drawable/baseline_restore_from_trash_24" />
-            </FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:text="Destination Name"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:text="Destination Price"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:text="Destination Location"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <LinearLayout
-                android:layout_width="204dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="right"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -62,7 +90,8 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="1"
-                    android:text="Destination Name" />
+                    android:text="Destination Name"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/dest_price"
@@ -73,7 +102,8 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="1"
-                    android:text="Destination Price" />
+                    android:text="Destination Price"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/dest_loc"
@@ -84,7 +114,8 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="1"
-                    android:text="Destination Location" />
+                    android:text="Destination Location"
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
@@ -94,9 +125,19 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/delete_dest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/delete" />
+
+                <Button
                     android:id="@+id/edit_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="2dp"
@@ -106,7 +147,7 @@
                 <Button
                     android:id="@+id/details_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="2dp"

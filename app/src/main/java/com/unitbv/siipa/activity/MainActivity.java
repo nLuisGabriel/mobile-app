@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        deleteDatabaseFile(getApplicationContext(), "mobile-database");
+        deleteDatabaseFile(getApplicationContext(), "mobile-database");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {

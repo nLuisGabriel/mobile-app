@@ -8,14 +8,17 @@
     <item
         android:id="@+id/tourist_destinations"
         android:title="Tourist Destinations"
+        android:layout_height="wrap_content"
         android:icon="@drawable/baseline_airplane_ticket_24"/>
     <item
         android:id="@+id/bookings"
         android:title="Bookings"
+        android:layout_height="wrap_content"
         android:icon="@drawable/baseline_collections_bookmark_24"/>
     <item
         android:id="@+id/log_out"
         android:title="Logout"
+        android:layout_height="wrap_content"
         android:icon="@drawable/baseline_logout_24"/>
 
 </menu>

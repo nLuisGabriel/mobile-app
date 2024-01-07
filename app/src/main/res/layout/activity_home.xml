@@ -17,16 +17,17 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
-        android:layout_width="1dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-1dp"
+        android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="0dp"
         app:itemActiveIndicatorStyle="@color/purple_500"
         app:itemBackground="@drawable/selector"
+        android:background="@color/purple_200"
         app:menu="@menu/menu" />
 
 </RelativeLayout>

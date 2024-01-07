@@ -2,11 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_accelerated="true"
-        android:drawable="@color/purple_500"
+        android:drawable="@color/purple_200"
         android:color = "@android:color/white"/>
 
     <item
         android:state_accelerated="false"
-        android:drawable="@color/purple_200"
+        android:drawable="@color/purple_500"
         android:color = "@android:color/black"/>
 </selector>
